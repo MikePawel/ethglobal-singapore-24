@@ -56,7 +56,10 @@ def explain_account_activity(wallet_addr):
     addr_to_info = {}
     for addr in addresses:
         addr_to_info[addr] = get_account_info(addr)
-        addr_to_info[addr] = {k: v for k, v in addr_to_info[addr].items() if k in RELEVANT_ACC_INFO_KEYS }
+        try:
+            addr_to_info[addr] = {k: v for k, v in addr_to_info[addr].items() if k in RELEVANT_ACC_INFO_KEYS }
+        except:
+            addr_to_info[addr] = []
 
     completion = oai_client.chat.completions.create(
         model="gpt-4o",

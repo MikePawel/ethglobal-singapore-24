@@ -13,9 +13,9 @@
         color: #ffffff;
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
+        align-items: flex-start; /* Align items to the top so it can scroll */
+        min-height: 100vh; /* Ensure body is at least 100% of the viewport height */
+        overflow-y: auto; /* Enable vertical scrolling */
       }
 
       .container {
@@ -30,6 +30,16 @@
         align-items: center;
         padding: 40px;
         box-sizing: border-box;
+        margin-top: 20px; /* Adds space between the top of the page and container */
+      }
+
+      footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #1f1f1f;
+        color: #ccc;
+        width: 100%;
+        position: relative; /* Make footer scroll with the page */
       }
 
       header {
@@ -227,11 +237,7 @@
             "Loading address details...";
 
           // Perform the fetch or API call here to get address details
-          const raw = await fetch(`http://127.0.0.1:5001/account/${address}`, {
-            headers: {
-              Accept: "text/html", // Tell the server to return HTML
-            },
-          });
+          const raw = await fetch(`http://127.0.0.1:5001/account/${address}`);
 
           // If the response is not ok, throw an error to handle it
           if (!raw.ok) {
@@ -239,13 +245,14 @@
           }
 
           // Get the response as text (HTML in this case)
-          const response = await raw.json().gpt_res;
+          const response = await raw.json();
 
           // Log the full response for debugging
           console.log("API Response:", response);
 
           // Display the HTML content in the frontend
-          document.getElementById("address-details").innerHTML = response;
+          document.getElementById("address-details").innerHTML =
+            response.gpt_res;
         } catch (error) {
           // Handle any errors (e.g., network issues or invalid responses)
           document.getElementById(
