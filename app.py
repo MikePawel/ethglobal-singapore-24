@@ -69,7 +69,7 @@ def explain_account_activity(wallet_addr):
         ]
     )
 
-    return { "gpt_res": completion.choices[0].message.content }
+    return { "gpt_res": completion.choices[0].message.content}
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5001)

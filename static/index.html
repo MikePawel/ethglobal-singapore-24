@@ -213,10 +213,45 @@
     <script>
       async function exploreAddress() {
         const address = document.getElementById("address-input").value;
-        // Perform fetch or API call here to get address details
-        const raw = await fetch(`http://127.0.0.1:5000/account/${address}`);
-        const response = await raw.json();
-        document.getElementById('address-details').innerHTML = response.details;
+
+        // If the input is empty, show a message and return early
+        if (!address) {
+          document.getElementById("address-details").innerHTML =
+            "Please enter a valid address.";
+          return;
+        }
+
+        try {
+          // Update the UI to show loading state
+          document.getElementById("address-details").innerHTML =
+            "Loading address details...";
+
+          // Perform the fetch or API call here to get address details
+          const raw = await fetch(`http://127.0.0.1:5001/account/${address}`, {
+            headers: {
+              Accept: "text/html", // Tell the server to return HTML
+            },
+          });
+
+          // If the response is not ok, throw an error to handle it
+          if (!raw.ok) {
+            throw new Error("Address not found or API error.");
+          }
+
+          // Get the response as text (HTML in this case)
+          const response = await raw.json().gpt_res;
+
+          // Log the full response for debugging
+          console.log("API Response:", response);
+
+          // Display the HTML content in the frontend
+          document.getElementById("address-details").innerHTML = response;
+        } catch (error) {
+          // Handle any errors (e.g., network issues or invalid responses)
+          document.getElementById(
+            "address-details"
+          ).innerHTML = `Error: ${error.message}`;
+        }
       }
     </script>
   </body>
