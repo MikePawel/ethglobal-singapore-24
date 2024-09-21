@@ -214,13 +214,9 @@
       async function exploreAddress() {
         const address = document.getElementById("address-input").value;
         // Perform fetch or API call here to get address details
-        // Example:
-        // const raw = await fetch(`http://example.com/api/address/${address}`);
-        // const response = await raw.json();
-        // document.getElementById('address-details').innerHTML = response.details;
-        document.getElementById(
-          "address-details"
-        ).innerHTML = `Showing details for address: ${address}`;
+        const raw = await fetch(`http://127.0.0.1:5000/account/${address}`);
+        const response = await raw.json();
+        document.getElementById('address-details').innerHTML = response.details;
       }
     </script>
   </body>
