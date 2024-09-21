@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epic Address Search</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #0f0f0f;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        box-sizing: border-box;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin: 0;
+        color: #4caf50;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+        color: #ccc;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 20px;
+        background-color: #333;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 15px;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 1.2rem;
+        outline: none;
+      }
+
+      .search-bar button {
+        padding: 15px 25px;
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .search-bar button:hover {
+        background-color: #45a049;
+      }
+
+      .hero {
+        width: 100%;
+        height: 300px;
+        background-image: url("https://via.placeholder.com/800x300");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #ffffff;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin: 0;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin: 10px 0 0 0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #1f1f1f;
+        color: #ccc;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Epic Address Search</h1>
+        <p>Enter an address to explore its details</p>
+      </header>
+
+      <div class="search-bar">
+        <input
+          id="address-input"
+          type="text"
+          placeholder="Enter an address..."
+        />
+        <button onclick="exploreAddress()">Explore</button>
+      </div>
+
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Discover New Realms</h1>
+          <p>Unveil the secrets hidden within each address</p>
+        </div>
+      </div>
+
+      <section class="content">
+        <div id="address-details">No details available yet</div>
+      </section>
+    </div>
+
+    <script>
+      async function exploreAddress() {
+        const address = document.getElementById("address-input").value;
+        // Perform fetch or API call here to get address details
+        // Example:
+        // const raw = await fetch(`http://example.com/api/address/${address}`);
+        // const response = await raw.json();
+        // document.getElementById('address-details').innerHTML = response.details;
+        document.getElementById(
+          "address-details"
+        ).innerHTML = `Showing details for address: ${address}`;
+      }
+    </script>
+
+    <footer>
+      <p>&copy; 2024 Epic Address Search. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
