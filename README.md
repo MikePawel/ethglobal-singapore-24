@@ -1,0 +1,9 @@
+## Description 
+
+Our project focuses on retrieving and analyzing transaction data from a specified cryptocurrency wallet or blockchain address. This process begins by scraping the wallet's transaction history, capturing all incoming and outgoing activities, such as transfers, trades, token exchanges, and other on-chain events. Once this data is collected, we systematically analyze each transaction to identify patterns, trends, and behaviors that reflect the user's activities. We then cross-reference this information with external datasets, such as market data, token metadata, or activity trends, to provide a comprehensive profile of the user's blockchain behavior. This enables us to generate a detailed description that accurately characterizes the user or wallet's primary activities, such as whether they are involved in frequent trading, liquidity providing, participating in decentralized finance (DeFi) platforms, or any other blockchain-based activity. By integrating both raw transaction data and cross-checked insights from relevant external sources, we create a more refined and precise understanding of how the wallet is being used. This description not only serves as a summary of past activities but can also offer predictive insights into future behavior based on observed patterns.
+
+The objective of this project is to provide users or stakeholders with a clear, data-backed representation of a wallet’s transactional footprint.
+
+## How it's made
+
+We built this project using a Python backend and a React web interface. When the user inputs a wallet address, a Python script retrieves transaction data via APIs, processes and analyzes it to map user activity based on transaction patterns. External data is integrated to enhance the analysis, and the backend serves the processed information to the frontend, which displays a behavior profile. We optimized the system with caching and parallel data fetching to improve performance and speed.
